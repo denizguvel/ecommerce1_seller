@@ -1,4 +1,5 @@
 import 'package:ecommerce1_seller/const/const.dart';
+import 'package:ecommerce1_seller/views/widgets/appbar_widget.dart';
 import 'package:ecommerce1_seller/views/widgets/dashboard_button.dart';
 import 'package:ecommerce1_seller/views/widgets/normal_text.dart';
 import 'package:flutter/material.dart';
@@ -10,16 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: boldText(text: dashboard, color: darkGrey, size: 16.0),
-        actions: [
-          Center(
-            child: normalText(text: intl.DateFormat('EEE, MMM d, ' 'yy').format(DateTime.now()), color: purpleColor),
-          ),
-          10.widthBox
-        ],
-      ),
+      appBar: appbarWidget(dashboard),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -46,10 +38,12 @@ class HomeScreen extends StatelessWidget {
             boldText(text: popular, color: fontGrey, size: 16.0),
             20.heightBox,
             ListView(
+              physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               children: List.generate(
                 3, 
                 (index) => ListTile(
+                  onTap: () {},
                   leading: Image.asset(imgProduct, width: 100, height: 100, fit: BoxFit.cover),
                   title: boldText(text: "Products title", color: fontGrey),
                   subtitle: normalText(text: "\$40.0", color: darkGrey),
