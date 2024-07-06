@@ -1,4 +1,5 @@
 # ecommerce1_seller
+ecommerce flutter app (admin)
 
 A new Flutter project.
 
